@@ -33,7 +33,7 @@ def query_samples_view():
 		query_result = r.json()
 		return process_result(query_result, sample_id)
 	flash('Invalid request')
-	return redirect(url_for('home'))
+	return redirect(url_for('query_view'))
 
 @app.route('/charts', methods=['GET'])
 def make_charts():
@@ -102,10 +102,10 @@ def process_result(query_result, sample_id):
 
 	if 'error' in query_result.keys():
 		flash('No records found matching sample id ' + sample_id)
-		return redirect(url_for('home'))
+		return redirect(url_for('query_view'))
 	if len(query_result['rows']) == 0:
 		flash('No records found matching sample id ' + sample_id)
-		return redirect(url_for('home'))
+		return redirect(url_for('query_view'))
 
 	if not hasattr(g, 'changesets'):
 		g.changesets = query_changes()
