@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>portalFlask</h1> 
+    <p>Query data received from CVR and view portal statistics</p> 
+    <p class="text-muted">There is currently data for {{ numsamples }} samples</p> 
+  </div>		
+	{% if error %}<p class=error><string>Error:</strong> {{ error }}{% endif %}	
+
+{% endblock %}

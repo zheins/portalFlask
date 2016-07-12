@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" id="samples_chart"></div>
+
+<script>
+	var data = [
+		{
+			x: [{% for x_val in samples_chart_x %}"{{ x_val }}"{% if not loop.last %},{% endif %}{% endfor %}],
+			y: [{% for y_val in samples_chart_y %}"{{ y_val }}"{% if not loop.last %},{% endif %}{% endfor %}],
+			type: 'scatter'		
+		}
+	];
+
+	var layout = {		
+		title: 'Number of Samples Over Time',
+		xaxis: {
+			title: 'Date'
+		},
+		yaxis: {
+			title: 'Number of Samples'
+		}		
+	}
+
+	Plotly.newPlot('samples_chart', data, layout);
+</script>
+
+{% endblock %}
